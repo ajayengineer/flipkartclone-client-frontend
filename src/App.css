@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiAppBar-positionFixed{
+  position:static!important;
+}
+.MuiDialog-paperWidthSm {
+  max-width: 100%!important;
+}
+.MuiMenu-paper{
+  top: 50px!important;
+}
