@@ -1,4 +1,5 @@
 import React, {} from 'react';
+import {Link} from 'react-router-dom';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { products } from "../../constants/data";
@@ -103,12 +104,14 @@ const Slide = ({ timer, title }) =>{
             >
                 {
                 products.map(product =>(
-                    <Box className={classes.wrapper}>
-                        <img src={product.url} className={classes.image} />
-                        <Typography className={classes.text} style={{fontWeight: 600, color: '#212121'}}> {product.title.shortTitle} </Typography>
-                        <Typography className={classes.text} style={{color: 'green'}}> {product.discount} </Typography>
-                        <Typography className={classes.text} style={{color: '#212121', opacity: .6}}> {product.tagline} </Typography>
-                    </Box>
+                    <Link to={`product/${product.id}`}>
+                      <Box className={classes.wrapper}>
+                          <img src={product.url} className={classes.image} />
+                          <Typography className={classes.text} style={{fontWeight: 600, color: '#212121'}}> {product.title.shortTitle} </Typography>
+                          <Typography className={classes.text} style={{color: 'green'}}> {product.discount} </Typography>
+                          <Typography className={classes.text} style={{color: '#212121', opacity: .6}}> {product.tagline} </Typography>
+                      </Box>
+                    </Link>
                 ))
                 }
             </Carousel>

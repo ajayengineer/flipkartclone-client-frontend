@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Button, Box, makeStyles, Typography, Badge  } from "@material-ui/core";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 //Components Imported
 import LoginDialog from '../login/Login';
@@ -39,6 +40,7 @@ const classes = useStyle();
 const [open, setOpen] = useState(false);
 const {account, setAccount} = useContext(LoginContext);
 
+const { cartItems } = useSelector(state => state.cart);
 
 const openloginDialog = () =>{
     setOpen(true);
@@ -54,7 +56,7 @@ const openloginDialog = () =>{
 
             <Typography>More</Typography>
             <Link to='/cart' className={classes.container}>
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={cartItems.length} color="secondary">
               <ShoppingCartIcon />
             </Badge>
                 
