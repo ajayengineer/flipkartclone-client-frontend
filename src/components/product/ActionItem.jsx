@@ -3,8 +3,6 @@ import { mergeClasses } from '@material-ui/styles';
 import { useDispatch } from 'react-redux';
 import {addToCart } from '../../redux/actions/cartActions';
 import {useHistory} from 'react-router-dom';
-import {payUsingPaytm} from '../../service/api';
-import {post} from '../../utils/paytm.js';
 
 
 const useStyle = makeStyles ({
@@ -40,16 +38,6 @@ const ActionItems = ({ products }) =>{
     const addItemToCart = () =>{
         dispatch(addToCart(products.id)); 
         history.push('/cart')
-    }
-
-//Payment Gateway API Button Function
-    const buyNow = async () =>{
-        let response = await payUsingPaytm({ amount: 500, email: 'ajaywebsolution@gmail.com'});
-        let information = {
-            action: 'https://securegw-stage-paytm.in/order/process',
-            params: response
-        }
-        post(information);
     }
 
     return(
